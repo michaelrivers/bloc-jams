@@ -73,18 +73,18 @@ body {
 @media (min-width: 640px) {
     html { font-size: 112%; }
 
-    .colum {
+    .column {
         float: left;
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
-    .colum.full { width: 100%; }
-    .colum.two-thirds { width: 66.7%; }
-    .colum.half { width: 50%; }
-    .colum.third { width: 33.3%; }
-    .colum.fourth { width: 25%; }
-    .colum.flow-opposite { float: right; }
+    .column.full { width: 100%; }
+    .column.two-thirds { width: 66.7%; }
+    .column.half { width: 50%; }
+    .column.third { width: 33.3%; }
+    .column.fourth { width: 25%; }
+    .column.flow-opposite { float: right; }
 }
 
 
