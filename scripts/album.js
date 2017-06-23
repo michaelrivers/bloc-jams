@@ -65,19 +65,26 @@ var setCurrentAlbum = function(album) {
 };
 
 var findParentByClassName = function(element, targetClass) {
+    console.log("working so far");
     if (element) {
         var currentParent = element.parentElement;
-        while (currentParent.className !== targetClass && currentParent.className !== null) {
+        while (currentParent && currentParent.className !== targetClass ) {
             currentParent = currentParent.parentElement;
-        }else if (currentParent.className == targetClass) {
+            console.log("currentParentInWhileLoop", currentParent);
+        }
+         if (currentParent !== targetClass) {
             console.log ("No parent found ");
-        }else if (currentParent.className == null) {
+    }
+        if (currentParent == null) {
             console.log("No parent found with that class name");
         }
+        console.log("currentParent", currentParent);
         return currentParent;
     }
-};
 
+};
+findParentByClassName(document.querySelector(".album-cover-art"), "album-cover-art");
+console.log("log findParentByClassName");
 var getSongItem = function(element) {
     switch (element.className) {
         case 'album-song-button':
