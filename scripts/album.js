@@ -16,7 +16,9 @@ var createSongRow = function(songNumber, songName, songLength) {
             if (currentlyPlayingSongNumber !== null) {
                 // Revert to song number for currently playing song because user started playing new song.
                 var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+                //console.log('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]')
                 currentlyPlayingCell.html(currentlyPlayingSongNumber);
+                //console.log(currentlyPlayingCell.length);
             }
             if (currentlyPlayingSongNumber !== songNumber) {
                 // Switch from Play -> Pause button to indicate new song is playing.
@@ -50,7 +52,6 @@ var createSongRow = function(songNumber, songName, songLength) {
             if (songNumber !== currentlyPlayingSongNumber) {
                 songNumberCell.html(songNumber);
             }
-            console.log("songNumber type is " + typeof songNumber + "\n and currentlyPlayingSongNumber type is " + typeof currentlyPlayingSongNumber);
         };
 
         $row.find('.song-item-number').click(clickHandler);
