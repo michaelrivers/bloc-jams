@@ -16,7 +16,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             if (currentlyPlayingSongNumber !== null) {
               
                 // Revert to song number for currently playing song because user started playing new song.
-                var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+                var currentlyPlayingCell = $('song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
                 currentlyPlayingCell.html(currentlyPlayingSongNumber);
             }
             if (currentlyPlayingSongNumber !== songNumber) {
