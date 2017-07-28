@@ -5,6 +5,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         +  '    <td class="song-item-title">' + songName + '</td>'
         +  '    <td class="song-item-duration">' + songLength + '</td>'
         +  '</tr>'
+        console.log ("test");
         ;
 
         var $row = $(template);
@@ -14,7 +15,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             var songNumber = parseInt($(this).attr('data-song-number'));
 
             if (currentlyPlayingSongNumber !== null) {
-              
+
                 // Revert to song number for currently playing song because user started playing new song.
                 var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
                 currentlyPlayingCell.html(currentlyPlayingSongNumber);
@@ -56,7 +57,9 @@ var createSongRow = function(songNumber, songName, songLength) {
 
         $row.find('.song-item-number').click(clickHandler);
         $row.hover(onHover, offHover);
+        console.log ($row);
         return $row;
+
 };
 
 var setCurrentAlbum = function(album) {
@@ -81,6 +84,7 @@ var setCurrentAlbum = function(album) {
     for (var i = 0; i < album.songs.length; i++) {
         var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs [i].duration);
         $albumSongList.append($newRow);
+        console.log ($albumSongList.length);
     }
 };
 
