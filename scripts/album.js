@@ -63,7 +63,7 @@ var createSongRow = function(songNumber, songName, songLength) {
                 var $volumeThumb = $('.volume .thumb');
                 $volumeFill.width(currentVolume + '%');
                 $volumeThumb.css({left: currentVolume + '%'});
-                
+
                 updatePlayerBarSong();
             } else if (currentlyPlayingSongNumber === songNumber) {
                 if (currentSoundFile.isPaused()) {
@@ -76,6 +76,7 @@ var createSongRow = function(songNumber, songName, songLength) {
                     currentSoundFile.pause();
                 }
             }
+
         };
 
         var onHover = function(event) {
@@ -101,6 +102,20 @@ var createSongRow = function(songNumber, songName, songLength) {
         $row.hover(onHover, offHover);
         return $row;
 };
+
+var togglePlayFromPlayerBar = function(){
+    var $songNumberCell=getSongNumberCell(currentlyPlayingSongNumber);
+    if (currentSoundFile.isPaused()) {
+        $songNumberCell.html(pauseButtonTemplate);
+        $(this).html(playerBarPauseButton);
+        currentSoundFile.play();
+    } else {
+        $songNumberCell.html(playButtonTemplate);
+        $(this).html(playerBarPlayButton);
+        currentSoundFile.pause();
+    }
+}
+//if (!currentSoundFile) { // set song }
 
 var setCurrentAlbum = function(album) {
     // # 1
@@ -226,10 +241,12 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $mainControl=$('.main-controls .play-pause');
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     setupSeekBars();
+    $mainControl.click(togglePlayFromPlayerBar)
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
 });
