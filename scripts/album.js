@@ -159,7 +159,7 @@ var setCurrentTimeInPlayerBar = function(currentTime){
 };
 
 var setTotalTimeInPlayerBar = function(){
-    currentSoundFile.bind('durationchange', function(event){
+    currentSoundFile.bindOnce('durationchange', function(event){
         var totalTime = this.getDuration();
         $('.total-time').text(filterTimeCode(totalTime));
     });
@@ -285,6 +285,8 @@ var nextSong = function() {
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
 
+    updateSeekBarWhileSongPlays();
+
     // Update the Player Bar information
     updatePlayerBarSong();
 
@@ -310,6 +312,8 @@ var previousSong = function() {
     // Set a new current song
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
+
+    updateSeekBarWhileSongPlays();
 
     // Update the Player Bar information
     updatePlayerBarSong();
